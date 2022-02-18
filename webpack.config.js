@@ -13,7 +13,7 @@ const plugins = [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new HTMLWebpackPlugin({
-        template: "./src/index.html"
+        template: "./public/index.html"
     }),
 ];
 
