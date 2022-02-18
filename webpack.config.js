@@ -1,5 +1,8 @@
 //this makes new css resources instead of bundling it with the js
+const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 let mode = "development";
 
@@ -10,6 +13,7 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
     mode: mode,
     output: {
+        path: path.resolve(__dirname, "dist"),
         assetModuleFilename: "images/[hash][ext][query]"
     },
     module: {
@@ -44,7 +48,13 @@ module.exports = {
     resolve: {
         extensions: [".js", ".jsx"]
     },
-    plugins: [new MiniCssExtractPlugin()],
+    plugins: [
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin(),
+        new HTMLWebpackPlugin({
+            template: "./src/index.html"
+        })
+    ],
     devtool: "source-map",
     devServer: {
         static: "./dist",
