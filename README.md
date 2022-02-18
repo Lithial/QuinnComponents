@@ -4,9 +4,10 @@ I created this repo to learn more about how webpack works and to have a template
 
 ## TODO:
 
-Integrate eslint, prettier.
+~~Integrate eslint, prettier~~.
+~~Staged linting~~
 Integrate testing, jest, cypress.
-Build create component scripts and templates. or snippets.
+~~Build create component scripts and templates. or snippets.~~
 Create a branch for component libraries and react native.
 Investigate why to use css variables over sass ones.
 Investigate React Sass best practices.
@@ -35,6 +36,7 @@ Based on this [Youtube Video](https://youtu.be/TOb1c39m64A), with more informati
 
 -   Built with yarn.
 -   Auto staged linting and formatting on commit.
+-   Component creation script with templating
 -   (Fast) Hot and Live Reloading.
 -   Latest stable ES version transpiling through @babel/preset-env and babel-loader.
 -   JSX syntax through @babel/preset-react and babel-loader.
@@ -49,3 +51,6 @@ Based on this [Youtube Video](https://youtu.be/TOb1c39m64A), with more informati
 ### Useful tips and tricks
 
 `// @refresh reset` at the top of the file will stop fast refresh from keeping state on that component
+
+Running `yarn gc {name}` will create all the appropriate scripts with good templates in the src/components folder. Files include
+component.jsx, component.stories.jsx, component.test.jsx, component.scss, index.js
