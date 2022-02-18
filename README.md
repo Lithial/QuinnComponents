@@ -8,3 +8,4 @@ You don't need to import react unless you need one of its functions like render 
 Investigate why to use css variables over sass ones.
 Investigate React Sass best practices. 
 See if bem is right for react
+Look into asset loading 
