@@ -3,6 +3,8 @@ I created this repo to learn more about how webpack works and to have a template
 
 ## TODO:
 Integrate eslint, prettier.
+Integrate testing, jest, cypress.
+Build create component scripts and templates. or snippets.
 Create a branch for component libraries and react native.
 Investigate why to use css variables over sass ones.
 Investigate React Sass best practices. 
