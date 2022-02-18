@@ -1,3 +1,6 @@
+//this makes new css resources instead of bundling it with the js
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 let mode = "development";
 
 if (process.env.NODE_ENV === "production") {
@@ -8,18 +11,27 @@ module.exports = {
     mode: mode,
     module: {
         rules: [
-        {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-              loader: "babel-loader",
+            {
+                test: /\.(s[ac]|c)ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader"
+                ],
             },
-        }
-    ]
-},
-devtool: "source-map",
-target: "web",
-devServer: {
-    static: "./dist"
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                  loader: "babel-loader",
+                },
+            }
+        ]
+    },
+    plugins: [new MiniCssExtractPlugin()],
+    devtool: "source-map",
+    devServer: {
+        static: "./dist",
     }
 }
