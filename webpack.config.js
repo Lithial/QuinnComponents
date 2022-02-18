@@ -1,13 +1,27 @@
 //this makes new css resources instead of bundling it with the js
 const path = require("path");
+//This one is experimental for react fast refresh. This enables hot reloading while keeping state (mostly)
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 let mode = "development";
 
+
+const plugins = [
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
+    new HTMLWebpackPlugin({
+        template: "./src/index.html"
+    }),
+];
+
 if (process.env.NODE_ENV === "production") {
     mode = "production";
+}
+if (process.env.SERVE) {
+    plugins.push(new ReactRefreshWebpackPlugin());
 }
 
 module.exports = {
@@ -19,7 +33,7 @@ module.exports = {
     module: {
         rules: [
             {
-              test: /\.(png|jge?g|gif|svg)/i,
+                test: /\.(png|jge?g|gif|svg)/i,
                 type: "asset",
             },
             {
@@ -40,7 +54,7 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
-                  loader: "babel-loader",
+                    loader: "babel-loader",
                 },
             }
         ]
@@ -48,13 +62,7 @@ module.exports = {
     resolve: {
         extensions: [".js", ".jsx"]
     },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin(),
-        new HTMLWebpackPlugin({
-            template: "./src/index.html"
-        })
-    ],
+    plugins: plugins,
     devtool: "source-map",
     devServer: {
         static: "./dist",
