@@ -19,8 +19,8 @@ function writeFileErrorHandler(err) {
 
 // component.tsx
 fs.writeFile(`${dir}/${name}.jsx`, component(name), writeFileErrorHandler);
-// component.scss
-fs.writeFile(`${dir}/${name}.scss`, "", writeFileErrorHandler);
+// _component.scss
+fs.writeFile(`${dir}/_${name}.scss`, "", writeFileErrorHandler);
 // storybook.jsx
 fs.writeFile(`${dir}/${name}.stories.jsx`, story(name), writeFileErrorHandler);
 // test.tsx
@@ -54,4 +54,14 @@ fs.readFile("./src/components/index.js", "utf8", function (err, data) {
 	const fileContent = `${importStatements}\n${exportStatements}`;
 
 	fs.writeFile(`./src/components/index.js`, fileContent, writeFileErrorHandler);
+});
+//import partial into src/index.scss
+fs.readFile("./src/styles/index.scss", "utf8", function (err, data) {
+	if (err) throw err;
+
+	const lineTemplate = `@use '../components/${name}/${name}';`;
+
+	const fileContent = `${data}${lineTemplate}`;
+
+	fs.writeFile(`./src/styles/index.scss`, fileContent, writeFileErrorHandler);
 });

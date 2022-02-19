@@ -10,7 +10,7 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "format": "prettier --write './src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
-    "gc": "node .generate_component $1"
+    "gc": "node .generate_component"
   },
   "devDependencies": {
     "@babel/core": "^7.17.4",
