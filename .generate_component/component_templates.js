@@ -1,46 +1,34 @@
 //component.jsx
-exports.component = (name) => `
-const ${name} = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+exports.component = (name) => `const ${name} = () => {
+\treturn <div></div>;
 };
 
 export default ${name};
 
-${name}.propTypes = {
-    
-}
-${name}.defaultProps = {
-    
-}
+${name}.propTypes = {};
+${name}.defaultProps = {};
 `;
 //component.stories.js
-exports.story = (name) => `import ${name} from './${name}';
+exports.story = (name) => `import ${name} from "./${name}";
 
 export default {
-  title: '${name}',
-  component: ${name}
+\ttitle: "${name}",
+\tcomponent: ${name},
 };
 
 const ${name}Template = () => <${name} />;
 
 export const ${name}Example = ${name}Template.bind({});
 
-${name}Example.args = {
-    
-}
+${name}Example.args = {};
 `;
 //component.test.jsx
 //TODO add testing support to generate scripts
-exports.test = (name) => `import { render } from '@testing-library/react';
-import ${name} from './${name}';
-
+exports.testFile = (name) => `import { render } from "@testing-library/react";
+import ${name} from "./${name}";
 `;
 // index.js
-exports.barrel = (name) => `import ${name} from './${name}';
+exports.barrel = (name) => `import ${name} from "./${name}";
 
 export default ${name};
 `;

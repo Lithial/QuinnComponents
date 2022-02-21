@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { component, story, test, barrel } = require("./component_templates.js");
+const { component, story, testFile, barrel } = require("./component_templates.js");
 
 // grab component name from terminal argument
 const [name] = process.argv.slice(2);
@@ -24,7 +24,7 @@ fs.writeFile(`${dir}/_${name}.scss`, "", writeFileErrorHandler);
 // storybook.jsx
 fs.writeFile(`${dir}/${name}.stories.jsx`, story(name), writeFileErrorHandler);
 // test.tsx
-fs.writeFile(`${dir}/${name}.test.jsx`, test(name), writeFileErrorHandler);
+fs.writeFile(`${dir}/${name}.test.jsx`, testFile(name), writeFileErrorHandler);
 // index.tsx
 fs.writeFile(`${dir}/index.js`, barrel(name), writeFileErrorHandler);
 
@@ -45,7 +45,7 @@ fs.readFile("./src/components/index.js", "utf8", function (err, data) {
 
 	// create the import and export statements
 	const importStatements = removeDuplicates
-		.map((importName) => `import ${importName} from './${importName}';\n`)
+		.map((importName) => `import ${importName} from "./${importName}";\n`)
 		.join("");
 	const exportStatements = `export {\n${removeDuplicates
 		.map((component) => `  ${component},\n`)
@@ -59,9 +59,9 @@ fs.readFile("./src/components/index.js", "utf8", function (err, data) {
 fs.readFile("./src/styles/index.scss", "utf8", function (err, data) {
 	if (err) throw err;
 
-	const lineTemplate = `@use '../components/${name}/${name}';`;
+	const lineTemplate = `@use "../components/${name}/${name}";\n`;
 
-	const fileContent = `${data}${lineTemplate}`;
+	const fileContent = `${data}\n${lineTemplate}`;
 
 	fs.writeFile(`./src/styles/index.scss`, fileContent, writeFileErrorHandler);
 });
