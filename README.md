@@ -4,16 +4,17 @@ I created this repo to learn more about how webpack works and to have a template
 
 ## TODO:
 
-~~Integrate eslint, prettier~~.
-~~Staged linting~~
-~~Build create component scripts and templates. or snippets.~~
-make new sass files start with \_ and import them into the index.scss
-Integrate testing, jest, cypress.
-Create a branch for component libraries and react native.
-Investigate why to use css variables over sass ones.
-Investigate React Sass best practices.
-See if bem is right for react.
-Look into asset loading for lazy images like gatsby has.
+-   ~~Integrate eslint, prettier~~.
+-   ~~Staged linting~~
+-   ~~Build create component scripts and templates. or snippets.~~
+-   ~~make new sass files start with \_ and import them into the index.scss~~
+-   ~~Storybook setup~~
+-   Integrate testing, jest, cypress (storyshots, loki, sinon).
+-   Create a branch for react native.
+-   ~~Investigate why to use css variables over sass ones. (inconclusive)~~
+-   Investigate React Sass best practices.
+-   See if bem is right for react.
+-   Look into asset loading for lazy images like gatsby has.
 
 ## How to use:
 
@@ -48,6 +49,7 @@ Based on this [Youtube Video](https://youtu.be/TOb1c39m64A), with more informati
 -   automatically inlining images less than 8kb (webpack default, which is configurable) into the javascript bundle output. Anything over 8kb will be created as a resource file in the final output folder.
 -   html-webpack-plugin@next for outputting an index.html from a template for proper production builds support.
 -   clean-webpack-plugin for automatic cleanup of the output directory (dist/) on each build.
+-   Built in storybook with the addons for accessibility, linking and measuring.
 
 ### Useful tips and tricks
 

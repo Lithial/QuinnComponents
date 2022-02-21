@@ -1,6 +1,5 @@
 //component.jsx
-exports.component = (name) => `import './${name}.scss';
-
+exports.component = (name) => `
 const ${name} = () => {
     return (
         <div>
