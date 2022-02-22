@@ -9,3 +9,15 @@ export const parameters = {
 		},
 	},
 };
+
+export const decorators = [
+	(StoryFn, { globals: { height = 400 } }) => (
+		<>
+			<div style={{
+				height: `${height}px`
+			}}>
+				<StoryFn />
+			</div>
+		</>
+	),
+];
